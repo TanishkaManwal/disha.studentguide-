@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js"></script>
+  <title>Student Guidance Platform</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Animation for Motivational Pop-Up */
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: scale(0.8); }
+      20% { opacity: 1; transform: scale(1); }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    #quote-popup {
+      animation: fadeInOut 5s forwards;
+      background-color: #E50914; /* Netflix Red */
+      color: white; /* White text */
+      font-family: 'Arial', sans-serif;
+    }
+
+    #quote-text {
+      font-weight: bold; /* Bold text */
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Motivational Pop-Up -->
+  <div id="quote-popup" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 py-4 rounded-lg shadow-lg z-50">
+    <h1 id="quote-text" class="text-xl font-semibold text-center">"Stay focused and never give up!"</h1>
+  </div>
+
+  <!-- Header Section -->
+  <header class="bg-purple-600 text-white py-6">
+    <div class="container mx-auto text-center">
+      <h1 class="text-3xl font-bold">Welcome to the Student Guidance Platform</h1>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md">
+    <div class="container mx-auto flex justify-between p-4">
+      <a href="#quiz" class="text-purple-600 font-medium">Quiz</a>
+      <a href="#motivation" class="text-purple-600 font-medium">Motivation Hub</a>
+      <a href="#mentorship" class="text-purple-600 font-medium">Mentorship</a>
+      <a href="#colleges" class="text-purple-600 font-medium">College Recommendations</a>
+      <a href="#future-guidance" class="text-purple-600 font-medium">Future Guidance</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-8">
+    <!-- Quiz Section -->
+    <section id="quiz" class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Take the Career Quiz</h2>
+      <form id="quiz-form" class="bg-white p-6 shadow-md rounded-lg">
+        <label class="block mb-2">What subjects interest you the most?</label>
+        <select id="subject-select" class="block w-full p-2 border rounded">
+          <option value="science">Science</option>
+          <option value="arts">Arts</option>
+          <option value="commerce">Commerce</option>
+        </select>
+        <button type="button" class="mt-4 bg-purple-600 text-white px-4 py-2 rounded" onclick="showQuizResult()">Submit</button>
+      </form>
+      <p id="quiz-result" class="mt-4 text-lg font-medium"></p>
+    </section>
+
+    <!-- Motivation Hub -->
+    <section id="motivation" class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Motivational Quotes</h2>
+      <p class="text-lg">"The future belongs to those who believe in the beauty of their dreams."</p>
+    </section>
+
+    <!-- Mentorship Section -->
+    <section id="mentorship" class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Mentorship Program</h2>
+      <div class="bg-white p-6 shadow-md rounded-lg">
+        <p class="text-lg">Connect with experienced mentors to guide your journey.</p>
+        <button class="mt-4 bg-purple-600 text-white px-4 py-2 rounded">Request a Mentor</button>
+      </div>
+    </section>
+
+    <!-- College Recommendation Section -->
+    <section id="colleges" class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">College Recommendations</h2>
+      <form id="college-form" class="bg-white p-6 shadow-md rounded-lg">
+        <label class="block mb-2">Enter your marks:</label>
+        <input type="number" id="marks-input" class="block w-full p-2 border rounded" />
+        <button type="button" class="mt-4 bg-purple-600 text-white px-4 py-2 rounded" onclick="recommendColleges()">Submit</button>
+      </form>
+      <p id="college-result" class="mt-4 text-lg font-medium"></p>
+    </section>
+
+    <!-- Future Guidance Section -->
+    <section id="future-guidance" class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Future Guidance</h2>
+      <p class="text-lg">Explore skill development, certifications, and internship opportunities.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-purple-600 text-white py-6 text-center">
+    <p>&copy; 2025 Student Guidance Platform. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Motivational Pop-Up Quotes
+    const quotes = [
+      "Stay focused and never give up!",
+      "Success is the sum of small efforts repeated daily.",
+      "Don't watch the clock; do what it does—keep going.",
+      "Believe in yourself and all that you are!"
+    ];
+
+    window.onload = () => {
+      const quoteText = document.getElementById("quote-text");
+      quoteText.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+
+      setTimeout(() => {
+        document.getElementById("quote-popup").style.display = "none";
+      }, 5000);
+    };
+
+    // Quiz Result Function
+    function showQuizResult() {
+      const subject = document.getElementById("subject-select").value;
+      const resultText = subject === "science" ? "Consider careers in engineering or research!" :
+                         subject === "arts" ? "Explore creative fields like design or media!" :
+                         "Look into business and finance opportunities!";
+      document.getElementById("quiz-result").textContent = resultText;
+    }
+
+    // College Recommendation Function
+    function recommendColleges() {
+      const marks = parseInt(document.getElementById("marks-input").value);
+      let recommendation;
+
+      if (marks >= 90) {
+        recommendation = "You can aim for top-tier universities!";
+      } else if (marks >= 70) {
+        recommendation = "Consider mid-tier colleges with strong programs.";
+      } else {
+        recommendation = "Look into colleges with supportive learning environments.";
+      }
+
+      document.getElementById("college-result").textContent = recommendation;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Career Path Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>What subjects do you enjoy the most?</p>
+                <input type="radio" name="question1" value="Science"> Science<br>
+                <input type="radio" name="question1" value="Math"> Math<br>
+                <input type="radio" name="question1" value="Arts and Literature"> Arts and Literature<br>
+                <input type="radio" name="question1" value="business, economics, accounting, and numbers">business, economics, accounting, and numbers<br>
+            </div>
+            <div class="question">
+                <p>What kind of activities do you prefer?</p>
+                <input type="radio" name="question2" value="Hands-on work"> Hands-on work<br>
+                <input type="radio" name="question2" value="Problem solving"> Problem solving<br>
+                <input type="radio" name="question2" value="Creative thinking"> Creative thinking<br>
+                <input type="radio" name="question2" value="Social work or community services"> Social work or community services<br>
+                <input type="radio" name="question2" value="Questioning about your surroundings">Questioning about your surroundings<br>
+            </div>
+            <div class="question">
+                <p>How do people often describe your strongest qualities?</p>
+                <input type="radio" name="question2" value="Creative and imaginative"> Creative and imaginative<br>
+                <input type="radio" name="question2" value="Logical and analytical"> Logical and analytical<br>
+                <input type="radio" name="question2" value="Persuasive and confident"> Persuasive and confident<br>
+                <input type="radio" name="question2" value="Empathetic and caring"> Empathetic and caring<br>
+                <input type="radio" name="question2" value="Hands-on and practical"> Hands-on and practical<br>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
